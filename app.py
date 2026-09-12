@@ -6,7 +6,7 @@ import xml.etree.ElementTree as ET
 
 app = Flask(__name__)
 
-#### Configure logging
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -83,7 +83,7 @@ def currency_exchange_rate():
     """SOAP endpoint for currency exchange rate"""
     logger.info(f"Currency exchange rate request received - Method: {request.method}")
     
-    ### If GET request, return info page instead of SOAP response 
+     
     if request.method == 'GET':
         return jsonify({
             "endpoint": "/Common/CurrencyExchangeRate/Get/2.1",
@@ -93,7 +93,7 @@ def currency_exchange_rate():
             "note": "Use POST method with XML content for SOAP response"
         }), 200
     
-    #### Log incoming request for debugging
+    
     if request.data:
         logger.info(f"Request body: {request.data.decode('utf-8')}")
     
